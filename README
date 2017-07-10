@@ -1,3 +1,7 @@
 Dependancies:
+    Python3: http://python.org/
+
     ProgressBar2: python3 -m pip install progressbar2
         https://pypi.python.org/pypi/progressbar2
+
+    Selenium: python3 -m pip install selenium

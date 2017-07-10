@@ -4,13 +4,12 @@ from googlescholar import ScholarParse
 import progressbar, time, random, html
 
 #======================[ Scrape this page! ]======================#
-pageToScrape = "https://www.roboticvision.org/publications/?y=2016"
+PAGE_TO_SCRAPE = "https://www.roboticvision.org/publications/?y=2016"
 #=================================================================#
 
 class ACRVScraper:
-    def __init__(self, page, pageData=""):
+    def __init__(self, page):
         self.pageURL = page
-        self.pageData = pageData
 
     def scrape(self):
         """
@@ -30,6 +29,7 @@ class ACRVScraper:
 
         articles = []
 
+        #=====[ This is where the magic happens - iterates over google scholar URLs and parse them ]=====#
         for url in urls:
             #Get article HTML and parse it
             articleHTML = self.getPageHTML(html.unescape(url))
@@ -45,6 +45,7 @@ class ACRVScraper:
             #Sleep for random time between 0.5s and 1.5s to try and circumvent query limits
             #time.sleep(random.randint(5, 15) / 10)
 
+        #Writes output to CSV
         self.writeCSV(articles)
 
     def writeCSV(self, articles):
@@ -56,7 +57,7 @@ class ACRVScraper:
         """
         csvHeader = articles[0].getCSVHeader()
 
-        with open("2014_output.csv", "w") as file:
+        with open("output.csv", "w") as file:
             file.write(csvHeader)
             for article in articles:
                 file.write(article.getCSV())
@@ -88,5 +89,5 @@ if __name__ == "__main__":
 ==========================
 
     """)
-    scraper = ACRVScraper(pageToScrape)
+    scraper = ACRVScraper(PAGE_TO_SCRAPE)
     scraper.scrape()
