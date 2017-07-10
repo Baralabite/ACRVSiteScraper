@@ -5,3 +5,9 @@ Dependancies:
         https://pypi.python.org/pypi/progressbar2
 
     Selenium: python3 -m pip install selenium
+
+To Run:
+    python3 scrape.py
+
+To Edit Page to Scrape:
+    Change PAGE_TO_SCRAPE in scrape.py
