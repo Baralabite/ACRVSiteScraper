@@ -1,0 +1,3 @@
+Dependancies:
+    ProgressBar2: python3 -m pip install progressbar2
+        https://pypi.python.org/pypi/progressbar2
