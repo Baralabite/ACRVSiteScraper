@@ -1,7 +1,7 @@
 import re
 import util
 from googlescholar import ScholarParse
-import progressbar, time, random, html
+import time, random, html #, progressbar
 
 #======================[ Scrape this page! ]======================#
 PAGE_TO_SCRAPE = "https://www.roboticvision.org/publications/?y=2016"
@@ -23,9 +23,9 @@ class ACRVScraper:
         totalArticles = len(urls)
         print("Articles to parse: {}".format(totalArticles))
 
-        self.bar = progressbar.ProgressBar(redirect_stdout=True)
-        self.bar.min_value = 0
-        self.bar.max_value = len(urls)
+        #self.bar = progressbar.ProgressBar(redirect_stdout=True)
+        #self.bar.min_value = 0
+        #self.bar.max_value = len(urls)
 
         articles = []
 
@@ -40,7 +40,7 @@ class ACRVScraper:
 
             #Update progress bar
             itemIndex = urls.index(url)
-            self.bar.update(itemIndex)
+            #self.bar.update(itemIndex)
 
             #Sleep for random time between 0.5s and 1.5s to try and circumvent query limits
             #time.sleep(random.randint(5, 15) / 10)

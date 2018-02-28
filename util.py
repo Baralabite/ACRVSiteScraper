@@ -1,6 +1,9 @@
 from selenium import webdriver
 
-wd = webdriver.Chrome('./chromedriver')
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+
+wd = webdriver.Chrome('./chromedriver.exe', chrome_options=options)
 
 def getPageHTML(url):
     """
